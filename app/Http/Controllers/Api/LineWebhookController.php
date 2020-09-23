@@ -36,8 +36,15 @@ class LineWebhookController extends Controller
             foreach ($events as $event) {
                 
                 $replyToken = $event->getReplyToken();
-                  $text = $event->getText();// 得到使用者輸入
-           $lineBot->replyText($replyToken, "123");// 回復使用者輸入
+                $text = $event->getText();// 得到使用者輸入
+                if ($text == "Buy") {
+                	$lineBot->replyText($replyToken, "您要買甚麼呢?");// 回復使用者輸入
+                }
+                else
+                {
+                	$lineBot->replyText($replyToken, "您在說什麼我聽不懂~");// 回復使用者輸入
+                }
+           		
                 //$textMessage = new TextMessageBuilder("你好");
               //  $lineBot->replyMessage($replyToken, $textMessage);
             }
