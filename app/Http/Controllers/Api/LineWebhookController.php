@@ -32,13 +32,29 @@ class LineWebhookController extends Controller
         try {
           
             $events = $lineBot->parseEventRequest($request->getContent(), $signature);
-
+            $image = "{
+            	type: 'image',
+		        originalContentUrl: 'https://cdn.pixabay.com/photo/2020/09/18/14/13/mountains-5581991__340.jpg',
+		        previewImageUrl: 'https://cdn.pixabay.com/photo/2020/09/18/14/13/mountains-5581991__340.jpg'
+		    }";
             foreach ($events as $event) {
                 
                 $replyToken = $event->getReplyToken();
                 $text = $event->getText();// 得到使用者輸入
-                if ($text == "Buy") {
-                	$lineBot->replyText($replyToken, "您要買甚麼呢?");// 回復使用者輸入
+                if ($text == "歲末驚喜") {
+                	$lineBot->replyMessage($replyToken, $image);// 回復使用者輸入
+                }
+                if ($text == "粉絲獨享") {
+                	$lineBot->replyText($replyToken, "粉絲獨享甚麼呢?");// 回復使用者輸入
+                }
+                if ($text == "常見問題") {
+                	$lineBot->replyText($replyToken, "常見問題甚麼呢?");// 回復使用者輸入
+                }
+                if ($text == "熱銷必敗") {
+                	$lineBot->replyText($replyToken, "熱銷必敗甚麼呢?");// 回復使用者輸入
+                }
+                if ($text == "推薦好友") {
+                	$lineBot->replyText($replyToken, "推薦好友甚麼呢?");// 回復使用者輸入
                 }
                 else
                 {
