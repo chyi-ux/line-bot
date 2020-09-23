@@ -20,4 +20,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 Route::post('/line/webhook', 'App\Http\Controllers\Api\LineWebhookController@webhook')->name('line.webhook');
-
+Route::get('/line/webhook', 'App\Http\Controllers\Api\LineWebhookController@webhook')->name('line.webhook');
