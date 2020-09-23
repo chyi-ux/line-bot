@@ -9,6 +9,9 @@ use LINE\LINEBot\Constant\HTTPHeader;
 use LINE\LINEBot\SignatureValidator;
 use LINE\LINEBot\HTTPClient\CurlHTTPClient;
 use LINE\LINEBot\MessageBuilder\TextMessageBuilder;
+use LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder;
+use LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder;
+use LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder;
 use Exception;
 
 class LineWebhookController extends Controller
@@ -45,11 +48,11 @@ class LineWebhookController extends Controller
 					{
 					  $actions = array(
 					    //一般訊息型 action
-					    new \LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder("按鈕1","文字1"),
+					    new MessageTemplateActionBuilder("按鈕1","文字1"),
 					    //網址型 action
-					    new \LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder("觀看食記","http://www.google.com")
+					    new UriTemplateActionBuilder("觀看食記","http://www.google.com")
 					  );
-					  $column = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder("標題".$i, "說明".$i, $img_url , $actions);
+					  $column = new CarouselColumnTemplateBuilder("標題".$i, "說明".$i, $img_url , $actions);
 					  $columns[] = $column;
 					}
 					$carousel = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselTemplateBuilder($columns);
