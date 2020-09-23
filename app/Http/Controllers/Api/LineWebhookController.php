@@ -76,7 +76,7 @@ class LineWebhookController extends Controller
 					  new \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder("上一頁", "page=1")
 					);
 
-					$img_url = "圖片網址，必需為 https (圖片非必填欄位)";
+					$img_url = "https://www.sample-videos.com/img/Sample-jpg-image-50kb.jpg";
 					$button = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\ButtonTemplateBuilder("按鈕文字","說明", $img_url, $actions);
 					$msg = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder("這訊息要用手機的賴才看的到哦", $button);
 					$lineBot->replyMessage($replyToken,$msg);// 回復使用者輸入
@@ -86,7 +86,8 @@ class LineWebhookController extends Controller
                 	$lineBot->replyMessage($replyToken, $msg);// 回復使用者輸入
                 }
                 if ($text == "推薦好友") {
-                	$stickerId = '1,2';
+                	$packageId = '1';
+                	$stickerId = '2';
                 	$msg = new \LINE\LINEBot\MessageBuilder\StickerMessageBuilder($packageId,$stickerId);
                 	$lineBot->replyMessage($replyToken, $msg);// 回復使用者輸入
                 }
