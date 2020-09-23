@@ -57,16 +57,38 @@ class LineWebhookController extends Controller
                 	$lineBot->replyMessage($replyToken,$msg);// 回復使用者輸入
                 }
                 if ($text == "粉絲獨享") {
-                	$lineBot->replyText($replyToken, "粉絲獨享甚麼呢?");// 回復使用者輸入
+                	$actions = array(
+					  new \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder("是", "ans=Y"),
+					  new \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder("否", "ans=N")
+					);
+					$button = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\ConfirmTemplateBuilder("問題", $actions);
+					$msg = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder("這訊息要用手機的賴才看的到哦", $button);
+                	$lineBot->replyMessage($replyToken,$msg);// 回復使用者輸入
                 }
                 if ($text == "常見問題") {
-                	$lineBot->replyText($replyToken, "常見問題甚麼呢?");// 回復使用者輸入
+                	$actions = array(
+					  //一般訊息型 action
+					  new \LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder("按鈕1","文字1"),
+					  //網址型 action
+					  new \LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder("Google","http://www.google.com"),
+					  //下列兩筆均為互動型action
+					  new \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder("下一頁", "page=3"),
+					  new \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder("上一頁", "page=1")
+					);
+
+					$img_url = "圖片網址，必需為 https (圖片非必填欄位)";
+					$button = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\ButtonTemplateBuilder("按鈕文字","說明", $img_url, $actions);
+					$msg = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder("這訊息要用手機的賴才看的到哦", $button);
+					$lineBot->replyMessage($replyToken,$msg);// 回復使用者輸入
                 }
                 if ($text == "熱銷必敗") {
-                	$lineBot->replyText($replyToken, "熱銷必敗甚麼呢?");// 回復使用者輸入
+                	$msg = new \LINE\LINEBot\MessageBuilder\LocationMessageBuilder("群義房屋", "台中市南屯區文心路一段424號", 24.1503955, 120.646975);
+                	$lineBot->replyMessage($replyToken, $msg);// 回復使用者輸入
                 }
                 if ($text == "推薦好友") {
-                	$lineBot->replyText($replyToken, "推薦好友甚麼呢?");// 回復使用者輸入
+                	$stickerId = '1,2';
+                	$msg = new \LINE\LINEBot\MessageBuilder\StickerMessageBuilder($packageId,$stickerId);
+                	$lineBot->replyMessage($replyToken, $msg);// 回復使用者輸入
                 }
                 else
                 {
