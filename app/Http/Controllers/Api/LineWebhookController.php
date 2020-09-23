@@ -38,8 +38,23 @@ class LineWebhookController extends Controller
                 $replyToken = $event->getReplyToken();
                 $text = $event->getText();// 得到使用者輸入
                 if ($text == "歲末驚喜") {
-                	$textMessage = new ImageMessageBuilder($image);
-                	$lineBot->replyMessage($replyToken,$textMessage);// 回復使用者輸入
+                	//輪播型(僅手機看的到)
+					$columns = array();
+					$img_url = "https://www.sample-videos.com/img/Sample-jpg-image-50kb.jpg";
+					for($i=0;$i<5;$i++) //最多5筆
+					{
+					  $actions = array(
+					    //一般訊息型 action
+					    new \LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder("按鈕1","文字1"),
+					    //網址型 action
+					    new \LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder("觀看食記","http://www.google.com")
+					  );
+					  $column = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder("標題".$i, "說明".$i, $img_url , $actions);
+					  $columns[] = $column;
+					}
+					$carousel = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselTemplateBuilder($columns);
+					$msg = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder("這訊息要用手機的賴才看的到哦", $carousel);
+                	$lineBot->replyMessage($replyToken,$msg);// 回復使用者輸入
                 }
                 if ($text == "粉絲獨享") {
                 	$lineBot->replyText($replyToken, "粉絲獨享甚麼呢?");// 回復使用者輸入
