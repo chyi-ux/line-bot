@@ -38,7 +38,7 @@ class LineWebhookController extends Controller
                 $replyToken = $event->getReplyToken();
                 $text = $event->getText();// 得到使用者輸入
                 if ($text == "歲末驚喜") {
-                	$textMessage = new TextMessageBuilder($image);
+                	$textMessage = new MessageBuilder($image);
                 	$lineBot->replyMessage($replyToken,$textMessage);// 回復使用者輸入
                 }
                 if ($text == "粉絲獨享") {
