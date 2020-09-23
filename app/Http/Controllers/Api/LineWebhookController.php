@@ -37,7 +37,7 @@ class LineWebhookController extends Controller
                 
                 $replyToken = $event->getReplyToken();
                   $text = $event->getText();// 得到使用者輸入
-           $lineBot->replyText($replyToken, $text);// 回復使用者輸入
+           $lineBot->replyText($replyToken, "123");// 回復使用者輸入
                 //$textMessage = new TextMessageBuilder("你好");
               //  $lineBot->replyMessage($replyToken, $textMessage);
             }
