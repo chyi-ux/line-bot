@@ -32,7 +32,7 @@ class LineWebhookController extends Controller
         try {
           
             $events = $lineBot->parseEventRequest($request->getContent(), $signature);
-            $image = "https://www.sample-videos.com/img/Sample-jpg-image-50kb.jpg";
+            $image = "original_content_url='https://www.sample-videos.com/img/Sample-jpg-image-50kb.jpg',preview_image_url='https://www.sample-videos.com/img/Sample-jpg-image-50kb.jpg'";
             foreach ($events as $event) {
                 
                 $replyToken = $event->getReplyToken();
