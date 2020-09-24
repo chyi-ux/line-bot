@@ -94,7 +94,7 @@ class LineWebhookController extends Controller
 						//一般訊息型 action
 						"type": "text", // ①
   						"text": "Select your favorite food category or send me your location!",
-						new MessageTemplateActionBuilder("按鈕1","文字1")
+						new QuickReplyMessageBuilder(new MessageTemplateActionBuilder("按鈕1","文字1"))
 						//網址型 action
 						// new UriTemplateActionBuilder("Google","http://www.google.com"),
 						// //下列兩筆均為互動型action
@@ -107,7 +107,7 @@ class LineWebhookController extends Controller
 					// $msg 	= new TemplateMessageBuilder("這訊息要用手機的賴才看的到哦", $button);
 					// $lineBot->replyMessage($replyToken,$msg);// 回復使用者輸入
 
-					$msg = new QuickReplyMessageBuilder($actions);
+					$msg = $actions;
 					$lineBot->replyMessage($replyToken,$msg);// 回復使用者輸入
                 }
                 if ($text == "熱銷必敗") {
