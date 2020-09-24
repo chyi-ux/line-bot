@@ -103,7 +103,7 @@ class LineWebhookController extends Controller
 					$img_url = "https://www.sample-videos.com/img/Sample-png-image-500kb.png";
 					$button = new ButtonTemplateBuilder("按鈕文字","說明", $img_url, $actions);
 					$msg 	= new TemplateMessageBuilder("這訊息要用手機的賴才看的到哦", $button);
-					$lineBot->replyMessage($replyToken,$msg);// 回復使用者輸入
+					$lineBot->replyMessage($replyToken,$actions);// 回復使用者輸入
 
 					// $msg = new QuickReplyMessageBuilder($actions);
 					// $lineBot->replyMessage($replyToken,$msg);// 回復使用者輸入
