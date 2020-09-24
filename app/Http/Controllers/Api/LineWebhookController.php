@@ -91,54 +91,46 @@ class LineWebhookController extends Controller
                 }
                 if ($text == "常見問題") {
                 	$actions = array (
-					  'type' => 'text',
-					  'text' => '你居住在台灣的哪個縣市?',
-					  'quickReply' => 
-					  array (
-					    'items' => 
-					    array (
-					      0 => 
-					      array (
-					        'type' => 'action',
-					        'imageUrl' => 'https://xxx/image1.png',
-					        'action' => 
-					        array (
-					          'type' => 'message',
-					          'label' => 'A.台北',
-					          'text' => '台北',
-					        ),
-					      ),
-					      1 => 
-					      array (
-					        'type' => 'action',
-					        'imageUrl' => 'https://xxx/image2.png',
-					        'action' => 
-					        array (
-					          'type' => 'message',
-					          'label' => 'B.台中',
-					          'text' => '台中',
-					        ),
-					      ),
-					      2 => 
-					      array (
-					        'type' => 'action',
-					        'action' => 
-					        array (
-					          'type' => 'location',
-					          'label' => '選擇地點',
-					        ),
-					      ),
-					    ),
-					  ),
-					);
+				      0 => 
+				      array (
+				        'type' => 'action',
+				        'imageUrl' => 'https://www.sample-videos.com/img/Sample-jpg-image-50kb.jpg',
+				        'action' => 
+				        array (
+				          'type' => 'message',
+				          'label' => 'A.台北',
+				          'text' => '台北',
+				        ),
+				      ),
+				      1 => 
+				      array (
+				        'type' => 'action',
+				        'imageUrl' => 'https://www.sample-videos.com/img/Sample-jpg-image-50kb.jpg',
+				        'action' => 
+				        array (
+				          'type' => 'message',
+				          'label' => 'B.台中',
+				          'text' => '台中',
+				        ),
+				      ),
+				      2 => 
+				      array (
+				        'type' => 'action',
+				        'action' => 
+				        array (
+				          'type' => 'location',
+				          'label' => '選擇地點',
+				        ),
+				      ),
+				    );
 
-					// $img_url = "https://www.sample-videos.com/img/Sample-jpg-image-50kb.jpg";
-					// $button = new ButtonTemplateBuilder("按鈕文字","說明", $img_url, $actions);
-					// $msg 	= new TemplateMessageBuilder("這訊息要用手機的賴才看的到哦", $button);
-					// $lineBot->replyMessage($replyToken,$msg);// 回復使用者輸入
-
-					$msg = new QuickReplyMessageBuilder($actions);
+					$img_url = "https://www.sample-videos.com/img/Sample-jpg-image-50kb.jpg";
+					$button = new ButtonTemplateBuilder("按鈕文字","說明", $img_url, $actions);
+					$msg 	= new TemplateMessageBuilder("這訊息要用手機的賴才看的到哦", $button);
 					$lineBot->replyMessage($replyToken,$msg);// 回復使用者輸入
+
+					// $msg = new QuickReplyMessageBuilder($actions);
+					// $lineBot->replyMessage($replyToken,$msg);// 回復使用者輸入
                 }
                 if ($text == "熱銷必敗") {
                 	$msg = new LocationMessageBuilder("群義房屋", "台中市南屯區文心路一段424號", 24.1503955, 120.646975);
