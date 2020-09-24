@@ -90,7 +90,22 @@ class LineWebhookController extends Controller
                 	$lineBot->replyMessage($replyToken,$msg);// 回復使用者輸入
                 }
                 if ($text == "常見問題") {
-                	$actions = array(
+     //            	$actions = array(
+					//   //一般訊息型 action
+					//   new MessageTemplateActionBuilder("按鈕1","文字1"),
+					//   //網址型 action
+					//   new UriTemplateActionBuilder("Google","http://www.google.com"),
+					//   //下列兩筆均為互動型action
+					//   new PostbackTemplateActionBuilder("下一頁", "page=3"),
+					//   new PostbackTemplateActionBuilder("上一頁", "page=1")
+					// );
+
+					// $img_url = "https://www.sample-videos.com/img/Sample-jpg-image-50kb.jpg";
+					// $button = new ButtonTemplateBuilder("按鈕文字","說明", $img_url, $actions);
+					// $msg 	= new TemplateMessageBuilder("這訊息要用手機的賴才看的到哦", $button);
+					// $lineBot->replyMessage($replyToken,$msg);// 回復使用者輸入
+
+					$actions = array(
 					  //一般訊息型 action
 					  new MessageTemplateActionBuilder("按鈕1","文字1"),
 					  //網址型 action
@@ -100,23 +115,8 @@ class LineWebhookController extends Controller
 					  new PostbackTemplateActionBuilder("上一頁", "page=1")
 					);
 
-					$img_url = "https://www.sample-videos.com/img/Sample-jpg-image-50kb.jpg";
-					$button = new ButtonTemplateBuilder("按鈕文字","說明", $img_url, $actions);
-					$msg 	= new TemplateMessageBuilder("這訊息要用手機的賴才看的到哦", $button);
+					$msg = new QuickReplyMessageBuilder($actions);
 					$lineBot->replyMessage($replyToken,$msg);// 回復使用者輸入
-
-					$actions1 = array(
-					  //一般訊息型 action
-					  new MessageTemplateActionBuilder("按鈕1","文字1"),
-					  //網址型 action
-					  new UriTemplateActionBuilder("Google","http://www.google.com"),
-					  //下列兩筆均為互動型action
-					  new PostbackTemplateActionBuilder("下一頁", "page=3"),
-					  new PostbackTemplateActionBuilder("上一頁", "page=1")
-					);
-
-					$msg1 = new QuickReplyMessageBuilder($actions1);
-					$lineBot->replyMessage($replyToken,$msg1);// 回復使用者輸入
                 }
                 if ($text == "熱銷必敗") {
                 	$msg = new LocationMessageBuilder("群義房屋", "台中市南屯區文心路一段424號", 24.1503955, 120.646975);
