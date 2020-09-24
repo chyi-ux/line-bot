@@ -92,6 +92,8 @@ class LineWebhookController extends Controller
                 if ($text == "常見問題") {
                 	$actions = array(
 						//一般訊息型 action
+						"type": "text", // ①
+  						"text": "Select your favorite food category or send me your location!",
 						new MessageTemplateActionBuilder("按鈕1","文字1")
 						//網址型 action
 						// new UriTemplateActionBuilder("Google","http://www.google.com"),
