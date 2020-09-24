@@ -9,6 +9,7 @@ use LINE\LINEBot\Constant\HTTPHeader;
 use LINE\LINEBot\SignatureValidator;
 use LINE\LINEBot\HTTPClient\CurlHTTPClient;
 use LINE\LINEBot\MessageBuilder\TextMessageBuilder;
+use LINE\LINEBot\MessageBuilder\ImageMessageBuilder;
 
 use LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder;
 use LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder;
@@ -21,7 +22,7 @@ use LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder;
 #確認型
 use LINE\LINEBot\MessageBuilder\TemplateBuilder\ConfirmTemplateBuilder;
 
-#按鈕
+#按鈕型
 use LINE\LINEBot\MessageBuilder\TemplateBuilder\ButtonTemplateBuilder;
 
 #座標
@@ -62,19 +63,18 @@ class LineWebhookController extends Controller
                 	//輪播型(僅手機看的到)
 					$columns = array();
 					$img_url = "https://www.sample-videos.com/img/Sample-jpg-image-50kb.jpg";
-					for($i=0;$i<5;$i++) //最多5筆
-					{
+					for($i=0;$i<5;$i++){ //最多5筆
 					  $actions = array(
 					    //一般訊息型 action
 					    new MessageTemplateActionBuilder("按鈕1","文字1"),
 					    //網址型 action
 					    new UriTemplateActionBuilder("觀看食記","http://www.google.com")
 					  );
-					  $column = new CarouselColumnTemplateBuilder("標題".$i, "說明".$i, $img_url , $actions);
+					  $column 	 = new CarouselColumnTemplateBuilder("標題".$i, "說明".$i, $img_url , $actions);
 					  $columns[] = $column;
 					}
 					$carousel = new CarouselTemplateBuilder($columns);
-					$msg = new TemplateMessageBuilder("這訊息要用手機的賴才看的到哦", $carousel);
+					$msg 	  = new TemplateMessageBuilder("這訊息要用手機的賴才看的到哦", $carousel);
                 	$lineBot->replyMessage($replyToken,$msg);// 回復使用者輸入
                 }
                 if ($text == "粉絲獨享") {
@@ -83,7 +83,7 @@ class LineWebhookController extends Controller
 					  new PostbackTemplateActionBuilder("否", "ans=N")
 					);
 					$button = new ConfirmTemplateBuilder("問題", $actions);
-					$msg = new TemplateMessageBuilder("這訊息要用手機的賴才看的到哦", $button);
+					$msg 	= new TemplateMessageBuilder("這訊息要用手機的賴才看的到哦", $button);
                 	$lineBot->replyMessage($replyToken,$msg);// 回復使用者輸入
                 }
                 if ($text == "常見問題") {
@@ -99,7 +99,7 @@ class LineWebhookController extends Controller
 
 					$img_url = "https://www.sample-videos.com/img/Sample-jpg-image-50kb.jpg";
 					$button = new ButtonTemplateBuilder("按鈕文字","說明", $img_url, $actions);
-					$msg = new TemplateMessageBuilder("這訊息要用手機的賴才看的到哦", $button);
+					$msg 	= new TemplateMessageBuilder("這訊息要用手機的賴才看的到哦", $button);
 					$lineBot->replyMessage($replyToken,$msg);// 回復使用者輸入
                 }
                 if ($text == "熱銷必敗") {
@@ -109,12 +109,16 @@ class LineWebhookController extends Controller
                 if ($text == "推薦好友") {
                 	$packageId = '1';
                 	$stickerId = '2';
-                	$msg = new StickerMessageBuilder($packageId,$stickerId);
+                	$msg 	   = new StickerMessageBuilder($packageId,$stickerId);
                 	$lineBot->replyMessage($replyToken, $msg);// 回復使用者輸入
                 }
                 else
                 {
-                	$lineBot->replyText($replyToken, "您在說什麼我聽不懂~");// 回復使用者輸入
+                	$original = "https://www.sample-videos.com/img/Sample-jpg-image-50kb.jpg";
+                	$preview = "https://www.sample-videos.com/img/Sample-jpg-image-50kb.jpg";
+                	$msg = new ImageMessageBuilder($original,$preview);
+                	$lineBot->replyMessage($replyToken, $msg);// 回復使用者輸入
+                	//$lineBot->replyText($replyToken, "您在說什麼我聽不懂~");// 回復使用者輸入
                 }
            		
                 //$textMessage = new TextMessageBuilder("你好");
