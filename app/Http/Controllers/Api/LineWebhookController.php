@@ -31,6 +31,9 @@ use LINE\LINEBot\MessageBuilder\LocationMessageBuilder;
 #Line貼圖
 use LINE\LINEBot\MessageBuilder\StickerMessageBuilder;
 
+#快速回復
+use LINE\LINEBot\MessageBuilder\QuickReplyMessageBuilder;
+
 use Exception;
 
 class LineWebhookController extends Controller
@@ -101,6 +104,19 @@ class LineWebhookController extends Controller
 					$button = new ButtonTemplateBuilder("按鈕文字","說明", $img_url, $actions);
 					$msg 	= new TemplateMessageBuilder("這訊息要用手機的賴才看的到哦", $button);
 					$lineBot->replyMessage($replyToken,$msg);// 回復使用者輸入
+
+					$actions1 = array(
+					  //一般訊息型 action
+					  new MessageTemplateActionBuilder("按鈕1","文字1"),
+					  //網址型 action
+					  new UriTemplateActionBuilder("Google","http://www.google.com"),
+					  //下列兩筆均為互動型action
+					  new PostbackTemplateActionBuilder("下一頁", "page=3"),
+					  new PostbackTemplateActionBuilder("上一頁", "page=1")
+					);
+
+					$msg1 = new QuickReplyMessageBuilder($actions1);
+					$lineBot->replyMessage($replyToken,$msg1);// 回復使用者輸入
                 }
                 if ($text == "熱銷必敗") {
                 	$msg = new LocationMessageBuilder("群義房屋", "台中市南屯區文心路一段424號", 24.1503955, 120.646975);
