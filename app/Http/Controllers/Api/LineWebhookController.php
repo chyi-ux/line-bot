@@ -94,10 +94,19 @@ class LineWebhookController extends Controller
 						//一般訊息型 action
 						// new MessageTemplateActionBuilder("按鈕1","文字1"),
 						//網址型 action
-						new UriTemplateActionBuilder("Google","http://www.google.com")
+						// new UriTemplateActionBuilder("Google","http://www.google.com")
 						//下列兩筆均為互動型action
 						// new PostbackTemplateActionBuilder("下一頁", "page=3"),
 						// new PostbackTemplateActionBuilder("上一頁", "page=1")
+						"type"=>"action",
+				        "imageUrl"=>"https://xxx/image1.png",
+				        "action"=> array(
+				        	"type"=> "message",
+					        "label"=> "A.台北",
+					        "text"=>"台北"
+				        )
+				          
+				        
 					);
 
 					// $img_url = "https://www.sample-videos.com/img/Sample-png-image-500kb.png";
