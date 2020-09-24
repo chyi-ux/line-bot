@@ -99,7 +99,7 @@ class LineWebhookController extends Controller
 						// new PostbackTemplateActionBuilder("下一頁", "page=3"),
 						// new PostbackTemplateActionBuilder("上一頁", "page=1")
 						"type"=>"action",
-				        "imageUrl"=>"https://xxx/image1.png",
+				        "imageUrl"=>"https://www.sample-videos.com/img/Sample-png-image-500kb.png",
 				        "action"=> array(
 				        	"type"=> "message",
 					        "label"=> "A.台北",
