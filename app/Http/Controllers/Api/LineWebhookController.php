@@ -128,7 +128,11 @@ class LineWebhookController extends Controller
 	                      ],
 	                      [
 	                            'type' => 'action',
-	                            'action' => new MessageTemplateActionBuilder("專人接聽","專人接聽")
+	                            'action' => [
+	                              'type'  => 'message',
+	                              'label' => '專人接聽',
+	                              'text'  => '專人接聽'
+	                            ]
 	                      ]
                     	]
 	                ];
