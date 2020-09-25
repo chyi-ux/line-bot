@@ -112,7 +112,7 @@ class LineWebhookController extends Controller
                         'items' => [
                           [
                                 'type' => 'action',
-                                new MessageTemplateActionBuilder("按鈕1","文字1")
+                                'action' => new MessageTemplateActionBuilder("按鈕1","文字1")
                           ],
                           [
                                 'type' => 'action',
