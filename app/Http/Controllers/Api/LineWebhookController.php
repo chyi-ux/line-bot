@@ -127,11 +127,7 @@ class LineWebhookController extends Controller
                       ],
                       [
                             'type' => 'action',
-                            'action' => [
-                              'type'  => 'message',
-                              'label' => '真人接聽',
-                              'text'  => '真人接聽'
-                            ]
+                            'action' => new MessageTemplateActionBuilder("專人接聽","專人接聽")
                       ]
                     ];
      //            	$actions = array(
