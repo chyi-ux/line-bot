@@ -90,28 +90,63 @@ class LineWebhookController extends Controller
                 	$lineBot->replyMessage($replyToken,$msg);// 回復使用者輸入
                 }
                 if ($text == "常見問題") {
-                	$actions = array(
-						//一般訊息型 action
-						new MessageTemplateActionBuilder("按鈕1","文字1"),
-						//網址型 action
-						// new UriTemplateActionBuilder("Google","http://www.google.com"),
-						// //下列兩筆均為互動型action
-						// new PostbackTemplateActionBuilder("下一頁", "page=3"),
-						// new PostbackTemplateActionBuilder("上一頁", "page=1")
-					);
+     //            	$actions = array(
+					// 	//一般訊息型 action
+					// 	new MessageTemplateActionBuilder("按鈕1","文字1"),
+					// 	//網址型 action
+					// 	new UriTemplateActionBuilder("Google","http://www.google.com"),
+					// 	//下列兩筆均為互動型action
+					// 	new PostbackTemplateActionBuilder("下一頁", "page=3"),
+					// 	new PostbackTemplateActionBuilder("上一頁", "page=1")
+					// );
 
 					// $img_url = "https://www.sample-videos.com/img/Sample-png-image-500kb.png";
 					// $button = new ButtonTemplateBuilder("按鈕文字","說明", $img_url, $actions);
 					// $msg 	= new TemplateMessageBuilder("這訊息要用手機的賴才看的到哦", $button);
-					$msg = array (
-					  'type' => 'text',
-					  'text' => 'Select your favorite food category or send me your location!',
-					   new QuickReplyMessageBuilder($actions)
-					);
-					$lineBot->replyMessage($replyToken,$msg);// 回復使用者輸入
-
-					// $msg = new QuickReplyMessageBuilder($action);
 					// $lineBot->replyMessage($replyToken,$msg);// 回復使用者輸入
+					$action = [
+                    'type' => 'text',
+                    'text' => 'あなたの年齢を教えてください',
+                    'quickReply' => [
+                        'items' => [
+                          [
+                                'type' => 'action',
+                                'action' => [
+                                  'type' => 'message',
+                                  'label' => '20代',
+                                  'text' => '20代'
+                                ]
+                          ],
+                          [
+                                'type' => 'action',
+                                'action' => [
+                                  'type' => 'message',
+                                  'label' => '30代',
+                                  'text' => '30代'
+                                ]
+                          ],
+                          [
+                                'type' => 'action',
+                                'action' => [
+                                  'type' => 'message',
+                                  'label' => '40代',
+                                  'text' => '40代'
+                                ]
+                          ],
+                          [
+                                'type' => 'action',
+                                'action' => [
+                                  'type' => 'message',
+                                  'label' => '50代',
+                                  'text' => '50代'
+                                ]
+                          ]
+                        ]
+                    ]
+                  ];
+
+					$msg = new QuickReplyMessageBuilder($action);
+					$lineBot->replyMessage($replyToken,$msg);// 回復使用者輸入
                 }
                 if ($text == "熱銷必敗") {
                 	$msg = new LocationMessageBuilder("群義房屋", "台中市南屯區文心路一段424號", 24.1503955, 120.646975);
