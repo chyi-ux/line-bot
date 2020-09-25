@@ -154,7 +154,7 @@ class LineWebhookController extends Controller
 						'type' => 'text',
 	                    'text' => '請問您想要問什麼呢?',
 	                    'quickReply' =>  $items
-					)
+					);
 
 					//$msg = new QuickReplyMessageBuilder($action);
 					$msg = new RawMessageBuilder($action);
