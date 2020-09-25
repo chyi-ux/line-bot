@@ -107,35 +107,39 @@ class LineWebhookController extends Controller
 					// $lineBot->replyMessage($replyToken,$msg);// 回復使用者輸入
 					$action = [
                     'type' => 'text',
-                    'text' => 'あなたの年齢を教えてください',
+                    'text' => '您想要問什麼呢?',
                     'quickReply' => [
                         'items' => [
                           [
                                 'type' => 'action',
-                                'action' => new MessageTemplateActionBuilder("按鈕1","文字1")
-                          ],
-                          [
-                                'type' => 'action',
                                 'action' => [
                                   'type' => 'message',
-                                  'label' => '30代',
-                                  'text' => '30代'
+                                  'label' => '關於我們',
+                                  'text' => '關於我們'
                                 ]
                           ],
                           [
                                 'type' => 'action',
                                 'action' => [
                                   'type' => 'message',
-                                  'label' => '40代',
-                                  'text' => '40代'
+                                  'label' => '產品服務',
+                                  'text' => '產品服務'
                                 ]
                           ],
                           [
                                 'type' => 'action',
                                 'action' => [
                                   'type' => 'message',
-                                  'label' => '50代',
-                                  'text' => '50代'
+                                  'label' => '售後服務',
+                                  'text' => '售後服務'
+                                ]
+                          ],
+                          [
+                                'type' => 'action',
+                                'action' => [
+                                  'type' => 'message',
+                                  'label' => '真人接聽',
+                                  'text' => '真人接聽'
                                 ]
                           ]
                         ]
