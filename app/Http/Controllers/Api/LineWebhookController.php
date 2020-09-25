@@ -91,24 +91,7 @@ class LineWebhookController extends Controller
                 	$lineBot->replyMessage($replyToken,$msg);// 回復使用者輸入
                 }
                 if ($text == "常見問題") {
-     //            	$actions = array(
-					// 	//一般訊息型 action
-					// 	new MessageTemplateActionBuilder("按鈕1","文字1"),
-					// 	//網址型 action
-					// 	new UriTemplateActionBuilder("Google","http://www.google.com"),
-					// 	//下列兩筆均為互動型action
-					// 	new PostbackTemplateActionBuilder("下一頁", "page=3"),
-					// 	new PostbackTemplateActionBuilder("上一頁", "page=1")
-					// );
-
-					// $img_url = "https://www.sample-videos.com/img/Sample-png-image-500kb.png";
-					// $button = new ButtonTemplateBuilder("按鈕文字","說明", $img_url, $actions);
-					// $msg 	= new TemplateMessageBuilder("這訊息要用手機的賴才看的到哦", $button);
-					// $lineBot->replyMessage($replyToken,$msg);// 回復使用者輸入
-					$action = [
-                    'type' => 'text',
-                    'text' => '您想要問什麼呢?',
-                    'quickReply' => [
+                	$items = 'quickReply' => [
                         'items' => [
                           [
                                 'type' => 'action',
@@ -143,7 +126,26 @@ class LineWebhookController extends Controller
                                 ]
                           ]
                         ]
-                    ]
+                    ];
+     //            	$actions = array(
+					// 	//一般訊息型 action
+					// 	new MessageTemplateActionBuilder("按鈕1","文字1"),
+					// 	//網址型 action
+					// 	new UriTemplateActionBuilder("Google","http://www.google.com"),
+					// 	//下列兩筆均為互動型action
+					// 	new PostbackTemplateActionBuilder("下一頁", "page=3"),
+					// 	new PostbackTemplateActionBuilder("上一頁", "page=1")
+					// );
+
+					// $img_url = "https://www.sample-videos.com/img/Sample-png-image-500kb.png";
+					// $button = new ButtonTemplateBuilder("按鈕文字","說明", $img_url, $actions);
+					// $msg 	= new TemplateMessageBuilder("這訊息要用手機的賴才看的到哦", $button);
+					// $lineBot->replyMessage($replyToken,$msg);// 回復使用者輸入
+					$action = [
+                    'type' => 'text',
+                    'text' => '請問您想要問什麼呢?',
+                    $items
+                    
                   ];
 
 					//$msg = new QuickReplyMessageBuilder($action);
