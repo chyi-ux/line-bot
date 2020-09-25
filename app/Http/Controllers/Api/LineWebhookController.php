@@ -110,14 +110,7 @@ class LineWebhookController extends Controller
                     'text' => 'あなたの年齢を教えてください',
                     'quickReply' => [
                         'items' => [
-                          [
-                                'type' => 'action',
-                                'action' => [
-                                  'type' => 'message',
-                                  'label' => '20代',
-                                  'text' => '20代'
-                                ]
-                          ],
+                          new MessageTemplateActionBuilder("按鈕1","文字1"),
                           [
                                 'type' => 'action',
                                 'action' => [
