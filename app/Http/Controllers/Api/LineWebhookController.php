@@ -90,27 +90,60 @@ class LineWebhookController extends Controller
                 	$lineBot->replyMessage($replyToken,$msg);// 回復使用者輸入
                 }
                 if ($text == "常見問題") {
-                	$actions = array(
-						//一般訊息型 action
-						new MessageTemplateActionBuilder("按鈕1","文字1"),
-						//網址型 action
-						new UriTemplateActionBuilder("Google","http://www.google.com"),
-						//下列兩筆均為互動型action
-						new PostbackTemplateActionBuilder("下一頁", "page=3"),
-						new PostbackTemplateActionBuilder("上一頁", "page=1")
-					);
-					// $action = array(
-					// 	"type" => "action",
-					//     "action"=> array(
-					//     	"type"=>"message",
-					//         "label"=>"Send photo",
-					//         'text' =>'test'
-					//     )
-					// )
+     //            	$actions = array(
+					// 	//一般訊息型 action
+					// 	new MessageTemplateActionBuilder("按鈕1","文字1"),
+					// 	//網址型 action
+					// 	new UriTemplateActionBuilder("Google","http://www.google.com"),
+					// 	//下列兩筆均為互動型action
+					// 	new PostbackTemplateActionBuilder("下一頁", "page=3"),
+					// 	new PostbackTemplateActionBuilder("上一頁", "page=1")
+					// );
 
-					$img_url = "https://www.sample-videos.com/img/Sample-png-image-500kb.png";
-					$button = new ButtonTemplateBuilder("按鈕文字","說明", $img_url, $actions);
-					$msg 	= new TemplateMessageBuilder("這訊息要用手機的賴才看的到哦", $button);
+					// $img_url = "https://www.sample-videos.com/img/Sample-png-image-500kb.png";
+					// $button = new ButtonTemplateBuilder("按鈕文字","說明", $img_url, $actions);
+					// $msg 	= new TemplateMessageBuilder("這訊息要用手機的賴才看的到哦", $button);
+					$msg = array (
+					  'type' => 'text',
+					  'text' => 'Select your favorite food category or send me your location!',
+					  'quickReply' => 
+					  array (
+					    'items' => 
+					    array (
+					      0 => 
+					      array (
+					        'type' => 'action',
+					        'imageUrl' => 'https://www.sample-videos.com/img/Sample-png-image-500kb.png',
+					        'action' => 
+					        array (
+					          'type' => 'message',
+					          'label' => 'Sushi',
+					          'text' => 'Sushi',
+					        ),
+					      ),
+					      1 => 
+					      array (
+					        'type' => 'action',
+					        'imageUrl' => 'https://www.sample-videos.com/img/Sample-png-image-500kb.png',
+					        'action' => 
+					        array (
+					          'type' => 'message',
+					          'label' => 'Tempura',
+					          'text' => 'Tempura',
+					        ),
+					      ),
+					      2 => 
+					      array (
+					        'type' => 'action',
+					        'action' => 
+					        array (
+					          'type' => 'location',
+					          'label' => 'Send location',
+					        ),
+					      ),
+					    ),
+					  ),
+					);
 					$lineBot->replyMessage($replyToken,$msg);// 回復使用者輸入
 
 					// $msg = new QuickReplyMessageBuilder($action);
