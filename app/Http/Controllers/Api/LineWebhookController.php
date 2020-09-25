@@ -93,50 +93,50 @@ class LineWebhookController extends Controller
                 if ($text == "常見問題") {
                 	$items =  [
                 		'items'=> [
-	                      [
-	                            'type' => 'action',
-	                            'action' => [
-	                              'type'  => 'location',
-	                              'label' => '關於我們',
-	                              'text'  => '關於我們'
-	                            ]
-	                      ],
-	                      [
-	                            'type' => 'action',
-	                            'action' => [
-	                              'type'  => 'camera',
-	                              'label' => '產品服務',
-	                              'text'  => '產品服務'
-	                            ]
-	                      ],
-	                      [
-	                            'type' => 'action',
-	                            'action' => [
-	                              'type'  => 'cameraRoll',
-	                              'label' => '售後服務',
-	                              'text'  => '售後服務'
-	                            ]
-	                      ],
-	                      [
-	                            'type' => 'action',
-	                            'action' => [
-	                              'type'  => 'postback',
-	                              'label' => '產品清單',
-	                              'data'  => 'action=url&item=clarence',
-	                              'text'  => '產品清單'
-	                            ]
-	                      ],
-	                      [
-	                            'type' => 'action',
-	                            'action' => [
-	                              'type'  => 'message',
-	                              'label' => '專人接聽',
-	                              'text'  => '專人接聽'
-	                            ]
-	                      ]
+							[
+								'type' => 'action',
+								'action' => [
+								  'type'  => 'location',
+								  'label' => '關於我們',
+								  'text'  => '關於我們'
+								]
+							],
+							[
+								'type' => 'action',
+								'action' => [
+								  'type'  => 'camera',
+								  'label' => '產品服務',
+								  'text'  => '產品服務'
+								]
+							],
+							[
+								'type' => 'action',
+								'action' => [
+								  'type'  => 'cameraRoll',
+								  'label' => '售後服務',
+								  'text'  => '售後服務'
+								]
+							],
+							[
+								'type' => 'action',
+								'action' => [
+								  'type'  => 'postback',
+								  'label' => '產品清單',
+								  'data'  => 'action=url&item=clarence',
+								  'text'  => '產品清單'
+								]
+							],
+							[
+								'type' => 'action',
+								'action' => [
+								  'type'  => 'message',
+								  'label' => '專人接聽',
+								  'text'  => '專人接聽'
+								]
+							]
                     	]
 	                ];
-     //            	$actions = array(
+					//  $actions = array(
 					// 	//一般訊息型 action
 					// 	new MessageTemplateActionBuilder("按鈕1","文字1"),
 					// 	//網址型 action
@@ -150,11 +150,11 @@ class LineWebhookController extends Controller
 					// $button = new ButtonTemplateBuilder("按鈕文字","說明", $img_url, $actions);
 					// $msg 	= new TemplateMessageBuilder("這訊息要用手機的賴才看的到哦", $button);
 					// $lineBot->replyMessage($replyToken,$msg);// 回復使用者輸入
-					$action = [
-                    'type' => 'text',
-                    'text' => '請問您想要問什麼呢?',
-                    'quickReply' =>  $items
-                  ];
+					$action = array(
+						'type' => 'text',
+	                    'text' => '請問您想要問什麼呢?',
+	                    'quickReply' =>  $items
+					)
 
 					//$msg = new QuickReplyMessageBuilder($action);
 					$msg = new RawMessageBuilder($action);
