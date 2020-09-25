@@ -91,8 +91,7 @@ class LineWebhookController extends Controller
                 	$lineBot->replyMessage($replyToken,$msg);// 回復使用者輸入
                 }
                 if ($text == "常見問題") {
-                	$items = 'quickReply' => [
-                        'items' => [
+                	$items =  [
                           [
                                 'type' => 'action',
                                 'action' => [
@@ -125,8 +124,7 @@ class LineWebhookController extends Controller
                                   'text' => '真人接聽'
                                 ]
                           ]
-                        ]
-                    ];
+                        ];
      //            	$actions = array(
 					// 	//一般訊息型 action
 					// 	new MessageTemplateActionBuilder("按鈕1","文字1"),
@@ -144,8 +142,9 @@ class LineWebhookController extends Controller
 					$action = [
                     'type' => 'text',
                     'text' => '請問您想要問什麼呢?',
-                    $items
-                    
+                    'quickReply' => [
+                        'items' => $items
+                    ]
                   ];
 
 					//$msg = new QuickReplyMessageBuilder($action);
