@@ -92,39 +92,48 @@ class LineWebhookController extends Controller
                 }
                 if ($text == "常見問題") {
                 	$items =  [
-                          [
-                                'type' => 'action',
-                                'action' => [
-                                  'type' => 'message',
-                                  'label' => '關於我們',
-                                  'text' => '關於我們'
-                                ]
-                          ],
-                          [
-                                'type' => 'action',
-                                'action' => [
-                                  'type' => 'message',
-                                  'label' => '產品服務',
-                                  'text' => '產品服務'
-                                ]
-                          ],
-                          [
-                                'type' => 'action',
-                                'action' => [
-                                  'type' => 'message',
-                                  'label' => '售後服務',
-                                  'text' => '售後服務'
-                                ]
-                          ],
-                          [
-                                'type' => 'action',
-                                'action' => [
-                                  'type' => 'message',
-                                  'label' => '真人接聽',
-                                  'text' => '真人接聽'
-                                ]
-                          ]
-                        ];
+                      [
+                            'type' => 'action',
+                            'action' => [
+                              'type'  => 'location',
+                              'label' => '關於我們',
+                              'text'  => '關於我們'
+                            ]
+                      ],
+                      [
+                            'type' => 'action',
+                            'action' => [
+                              'type'  => 'camera',
+                              'label' => '產品服務',
+                              'text'  => '產品服務'
+                            ]
+                      ],
+                      [
+                            'type' => 'action',
+                            'action' => [
+                              'type'  => 'cameraRoll',
+                              'label' => '售後服務',
+                              'text'  => '售後服務'
+                            ]
+                      ],
+                      [
+                            'type' => 'action',
+                            'action' => [
+                              'type'  => 'postback',
+                              'label' => '產品清單',
+                              'data'  => 'action=url&item=clarence',
+                              'text'  => '產品清單'
+                            ]
+                      ],
+                      [
+                            'type' => 'action',
+                            'action' => [
+                              'type'  => 'message',
+                              'label' => '真人接聽',
+                              'text'  => '真人接聽'
+                            ]
+                      ]
+                    ];
      //            	$actions = array(
 					// 	//一般訊息型 action
 					// 	new MessageTemplateActionBuilder("按鈕1","文字1"),
