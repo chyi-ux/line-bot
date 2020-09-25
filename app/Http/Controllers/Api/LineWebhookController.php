@@ -33,6 +33,7 @@ use LINE\LINEBot\MessageBuilder\StickerMessageBuilder;
 
 #快速回復
 use LINE\LINEBot\MessageBuilder\QuickReplyMessageBuilder;
+use LINE\LINEBot\MessageBuilder\RawMessageBuilder;
 
 use Exception;
 
@@ -145,7 +146,8 @@ class LineWebhookController extends Controller
                     ]
                   ];
 
-					$msg = new QuickReplyMessageBuilder($action);
+					//$msg = new QuickReplyMessageBuilder($action);
+					$msg = new RawMessageBuilder($action);
 					$lineBot->replyMessage($replyToken,$msg);// 回復使用者輸入
                 }
                 if ($text == "熱銷必敗") {
