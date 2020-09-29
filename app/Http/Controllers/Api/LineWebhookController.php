@@ -170,14 +170,14 @@ class LineWebhookController extends Controller
                 	$msg 	   = new StickerMessageBuilder($packageId,$stickerId);
                 	$lineBot->replyMessage($replyToken, $msg);// 回復使用者輸入
                 }
-                else
-                {
-                	$original = "https://www.sample-videos.com/img/Sample-jpg-image-50kb.jpg";
-                	$preview = "https://www.sample-videos.com/img/Sample-jpg-image-50kb.jpg";
-                	$msg = new ImageMessageBuilder($original,$preview);
-                	$lineBot->replyMessage($replyToken, $msg);// 回復使用者輸入
-                	//$lineBot->replyText($replyToken, "您在說什麼我聽不懂~");// 回復使用者輸入
-                }
+                // else
+                // {
+                // 	$original = "https://www.sample-videos.com/img/Sample-jpg-image-50kb.jpg";
+                // 	$preview = "https://www.sample-videos.com/img/Sample-jpg-image-50kb.jpg";
+                // 	$msg = new ImageMessageBuilder($original,$preview);
+                // 	$lineBot->replyMessage($replyToken, $msg);// 回復使用者輸入
+                // 	//$lineBot->replyText($replyToken, "您在說什麼我聽不懂~");// 回復使用者輸入
+                // }
            		
                 //$textMessage = new TextMessageBuilder("你好");
               //  $lineBot->replyMessage($replyToken, $textMessage);
