@@ -175,7 +175,7 @@ class LineWebhookController extends Controller
                 	// $original = "https://www.sample-videos.com/img/Sample-jpg-image-50kb.jpg";
                 	// $preview = "https://www.sample-videos.com/img/Sample-jpg-image-50kb.jpg";
                 	// $msg = new ImageMessageBuilder($original,$preview);
-                	$msg = new TextMessageBuilder("感謝您傳送訊息給我(kiss)！很抱歉，本帳號無法個別回覆用戶的訊息。如有問題請撥打專線，將會有專人為您服務！(3 hearts)");
+                	$msg = new TextMessageBuilder("感謝您傳送訊息給我！很抱歉，本帳號無法個別回覆用戶的訊息。如有問題請撥打專線，將會有專人為您服務！");
                 	$lineBot->replyMessage($replyToken, $msg);// 回復使用者輸入
                 	//$lineBot->replyText($replyToken, "您在說什麼我聽不懂~");// 回復使用者輸入
                 }
