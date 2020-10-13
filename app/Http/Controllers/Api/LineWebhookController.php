@@ -130,8 +130,8 @@ class LineWebhookController extends Controller
 								'type' => 'action',
 								'action' => [
 								  'type'  => 'message',
-								  'label' => '專人接聽',
-								  'text'  => '專人接聽'
+								  'label' => '氣象預報',
+								  'text'  => '氣象預報'
 								]
 							]
                     	]
@@ -168,6 +168,11 @@ class LineWebhookController extends Controller
                 	$packageId = '1';
                 	$stickerId = '2';
                 	$msg 	   = new StickerMessageBuilder($packageId,$stickerId);
+                	$lineBot->replyMessage($replyToken, $msg);// 回復使用者輸入
+                }
+                if ($text == "氣象預報") {
+                	$weather = 'https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWB-3B0B2443-470D-4091-8701-493199A83EA6&locationName=臺中市';
+                	$msg 	 = $weather;
                 	$lineBot->replyMessage($replyToken, $msg);// 回復使用者輸入
                 }
                 else
